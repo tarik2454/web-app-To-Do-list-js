@@ -10,6 +10,9 @@ form.addEventListener('submit', addTask);
 // Удаление задачи
 tasksList.addEventListener('click', deleteTask);
 
+// Отмечаем задачу завершенной
+tasksList.addEventListener('click', doneTask);
+
 // Функции
 function addTask(event) {
     // Отменяем отправку формы
@@ -39,16 +42,36 @@ function addTask(event) {
     taskInput.value = '';
     taskInput.focus();
 
-    // Если в списке задач более одного элемента то мы его скрывем
+    // Если в списке задач более одного элемента, скрываем блок "Список дел пуст"
     if (tasksList.children.length > 1) {
         emptyList.classList.add('none');
     }
 }
 
 function deleteTask(event) {
-    // Проверяем что клик был по кнопке "удалить задачу"
-    if (event.target.dataset.action === 'delete') {
-        const parentNode = event.target.closest('.list-group-item');
-        parentNode.remove();
+    // Проверяем если клик был НЕ по кнопке "удалить задачу"
+    if (event.target.dataset.action !== 'delete') {
+        return;
     }
+
+    // В противном случае клик будет по кнопке "удалить задачу"
+    const parentNode = event.target.closest('.list-group-item');
+    parentNode.remove();
+
+    // Если в списке задач один элемент, показываем блок "Список дел пуст"
+    if (tasksList.children.length === 1) {
+        emptyList.classList.remove('none');
+    }
+}
+
+function doneTask(event) {
+    // Проверяем что клик был НЕ по кнопке "задача выполнена"
+    if (event.target.dataset.action !== 'done') {
+        return;
+    }
+
+    // В противном случае клик будет по кнопке "задача выполнена"
+    const parentNode = event.target.closest('.list-group-item');
+    const taskTitle = parentNode.querySelector('.task-title');
+    taskTitle.classList.toggle('task-title--done');
 }
