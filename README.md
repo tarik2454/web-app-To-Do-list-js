@@ -1,4 +1,4 @@
-# app-ToDo-list
+# App ToDo-List
 
 Project Link: [https://tarik2454.github.io/app-ToDo-list/](https://tarik2454.github.io/app-ToDo-list/)
 
@@ -12,4 +12,5 @@ Project Link: [https://tarik2454.github.io/app-ToDo-list/](https://tarik2454.git
 
 ## Contact:
 
-* email - tarik2454@gmail.com
+Telegram: <https://t.me/tarik_2454>  
+Email: <tarik2454@gmail.com>
